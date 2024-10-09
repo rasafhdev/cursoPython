@@ -1,4 +1,4 @@
-# Código com DRY (Don’t Repeat Yourself)
+# Código com DRY (Don't Repeat Yourself)
 
 class Connection:
     def __init__(self, host='localhost'): # Is private

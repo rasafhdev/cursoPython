@@ -1,7 +1,7 @@
 # method vs @classmethod vs @staticmethod
 # method - self, método de instância
 # @classmethod - cls, método de classe
-# @staticmethod - método estático (❌self, ❌cls)
+# @staticmethod - método estático (❌self, ❌❌cls)
 
 class Connection:
     def __init__(self, host='localhost'):
