@@ -13,4 +13,4 @@ class Calculadora:
 
     @resultado.setter
     def set_valores(self):
-        
+        ...
