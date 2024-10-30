@@ -11,38 +11,40 @@ from pathlib import Path
 # uma classe para herdar a principal LogPrintMixin
 # chamada dos métodos.
 
+from pathlib import Path
 
-
-
-LOG_FILE = Path(__file__).parent / 'log.txt'
+LOG_FILE  = Path(__file__).parent / 'log.txt'
 
 class Log:
-    def _log(self, msg): # Assinatura do método
-        raise NotImplementedError('Implemente o método log')
+    def _log(self, msg):
+        raise NotImplementedError('Implemente o método de log')
 
     def log_error(self, msg):
-        msg_formatada = f'{msg} ({self.__class__.__name__})'
-        with open(LOG_FILE, 'a') as arquivo:
-            arquivo.write(msg_formatada)
-            arquivo.write('\n')
-        return self._log(f'Error: {msg}')
+        return self._log(f'Erro: {msg}')
 
     def log_success(self, msg):
         return self._log(f'Success: {msg}')
 
-
-# Mixin é para adicionar funcionalidades na sua herança multipla
-class LogFileMixin(Log): #é um LOG
+class LogFileMixin(Log):
     def _log(self, msg):
         print(msg)
+        msg_formatada = f'{msg} ({self.__class__.__name__})'
+        with open(LOG_FILE, 'a') as arquivo:
+            arquivo.write(msg_formatada)
+            arquivo.write('\n')
 
-class LogPrintMixin(Log): #é um LOG
+class LogPrintMixin(Log):
     def _log(self, msg):
-        print(f'{msg}')
+        print(f'{msg}, {(self.__class__.__name__)}')
 
 
 if __name__ == '__main__':
     l = LogPrintMixin()
     l.log_error('qualquer coisa')
-    l.log_success('Qualquer coisa')
-    print(LOG_FILE)
+    l.log_success('Que legal')
+    lp = LogPrintMixin()
+    lp.log_error('qualquer coisa')
+    lp.log_success('Que legal')
+    lf = LogFileMixin()
+    lf.log_error('qualquer coisa')
+    lf.log_success('Que legal')

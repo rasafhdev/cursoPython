@@ -1,0 +1,30 @@
+from log import LogPrintMixin
+
+class Eletronico:
+    def __init__(self, nome):
+        self._nome = nome
+        self._ligado = False  # Corrigido de _estado para _ligado
+
+    def ligar(self):
+        if not self._ligado:
+            self._ligado = True
+
+    def desligar(self):
+        if self._ligado:
+            self._ligado = False
+
+class Smartphone(Eletronico, LogPrintMixin):
+
+    def ligar(self):
+        super().ligar()
+
+        if self._ligado:
+            msg = f'{self._nome} está ligado'  # Corrigido de self.nome para self._nome
+            self.log_success(msg)
+
+    def desligar(self):
+        super().desligar()
+
+        if not self._ligado:
+            msg = f'{self._nome} está desligado'  # Corrigido de self.nome para self._nome
+            self.log_success(msg)

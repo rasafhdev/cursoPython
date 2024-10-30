@@ -1,1 +1,4 @@
-qualquer coisa (LogPrintMixin)qualquer coisa (LogPrintMixin)
+Erro: qualquer coisa (LogFileMixin)
+Erro: Que legal (LogFileMixin)
+Erro: qualquer coisa (LogFileMixin)
+Success: Que legal (LogFileMixin)
